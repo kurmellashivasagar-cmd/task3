@@ -1,0 +1,45 @@
+-- View Complete Dataset
+SELECT * FROM orders;
+
+-- Total Number of Orders
+SELECT COUNT(*) AS TotalOrders
+FROM orders;
+
+-- Total Revenue
+SELECT SUM(c14) AS Revenue
+FROM orders;
+
+-- Average Order Value
+SELECT AVG(c14) AS AverageOrderValue
+FROM orders;
+
+-- Top Selling Products
+SELECT c4 AS Product, SUM(c5) AS TotalSold
+FROM orders
+GROUP BY c4
+ORDER BY TotalSold DESC;
+
+-- Most Used Payment Method
+SELECT c8 AS PaymentMethod, COUNT(*) AS UsageCount
+FROM orders
+GROUP BY c8
+ORDER BY UsageCount DESC;
+
+-- Order Status Analysis
+SELECT c9 AS OrderStatus, COUNT(*) AS Total
+FROM orders
+GROUP BY c9;
+
+-- Highest Revenue Orders
+SELECT * FROM orders
+ORDER BY c14 DESC;
+
+-- Orders with Quantity Greater Than 2
+SELECT * FROM orders
+WHERE c5 > 2;
+
+-- Revenue by Product
+SELECT c4 AS Product, SUM(c14) AS Revenue
+FROM orders
+GROUP BY c4
+ORDER BY Revenue DESC;
